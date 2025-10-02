@@ -1,6 +1,6 @@
 #!/bin/bash
 
-RG_NAME="rg-vmw02"
+RG_NAME="rg-vm02"
 LOCATION="eastus"
 VM_NAME="vm-srv01"
 IMAGE="Win2022Datacenter"
