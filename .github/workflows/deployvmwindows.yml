@@ -16,7 +16,7 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Dar permissão de execução no script
-        run: chmod +x scripts/create-vm-windows.sh
+        run: chmod +x scripts/create-vm-windowsrv.sh
 
       - name: Criar VM Windows
         env:
