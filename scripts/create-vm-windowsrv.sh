@@ -6,7 +6,7 @@ VM_NAME="vm-srv01"
 IMAGE="Win2022Datacenter"
 SIZE="Standard_B2s"
 ADMIN_USER="adminuser"
-ADMIN_PASSWORD="" 
+ADMIN_PASSWORD="${ADMIN_PASSWORD}" 
 
 az group create --name $RG_NAME --location $LOCATION
 
