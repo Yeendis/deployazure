@@ -1,6 +1,8 @@
-RG_NAME="rg-deploy1"
+#!/bin/bash
+# Script para criar Resource Group no Azure
+RG_NAME="MeuResourceGroupTest"
 LOCATION="eastus"
 
 az group create \
- --nmae $RG_NAME \
- --location $LOCATION
+  --name $RG_NAME \
+  --location $LOCATION
