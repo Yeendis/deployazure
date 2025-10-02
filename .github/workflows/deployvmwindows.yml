@@ -23,4 +23,4 @@ jobs:
           ADMIN_PASSWORD: ${{ secrets.VM_WIN_PASSWORD }}
         run: |
           export ADMIN_PASSWORD="${ADMIN_PASSWORD}"
-          ./scripts/create-vm-windows.sh
+          ./scripts/create-vm-windowsrv.sh
