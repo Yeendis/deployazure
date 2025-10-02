@@ -15,8 +15,5 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Criar Resource Group
-        run: |
-          az group create \
-            --name MeuResourceGroupTest \
-            --location eastus
+      - name: Rodar Script create-rg.sh
+        run: ./scripts/create-rg.sh
