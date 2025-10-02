@@ -14,6 +14,9 @@ jobs:
         uses: azure/login@v2
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-
+          
+      - name: Dar permissão de execução no script
+        run: chmod +x scripts/create-rg.sh
+        
       - name: Rodar Script create-rg.sh
         run: ./scripts/create-rg.sh
