@@ -1,12 +1,12 @@
 #!/bin/bash
 
-RG_NAME="MeuResourceGroupWin"
+RG_NAME="rg-vmw02"
 LOCATION="eastus"
-VM_NAME="MinhaVMWindows"
+VM_NAME="vm-srv01"
 IMAGE="Win2022Datacenter"
 SIZE="Standard_B2s"
 ADMIN_USER="adminuser"
-ADMIN_PASSWORD="SenhaForte123!" 
+ADMIN_PASSWORD="" 
 
 az group create --name $RG_NAME --location $LOCATION
 
