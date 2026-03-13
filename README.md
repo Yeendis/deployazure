@@ -29,12 +29,9 @@ scripts/
 └── validate.sh
 
 tests/
-├── test_create_vm_windowsrv.py
-└── test_dummy.py
-
+└── test_create_vm_windowsrv.py
 README.md
 ```
-> Observação: após a criação do teste funcional real, o arquivo `test_dummy.py` pode ser removido, pois deixa de ser necessário.
 ---
 Fluxo da pipeline
 A pipeline está dividida em duas etapas principais:
