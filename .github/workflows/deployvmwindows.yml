@@ -32,9 +32,9 @@ jobs:
 
     - name: Validar scripts
       run: |
-        chmod +x scripts/validate.sh
-        ./scripts/validate.sh
-
+        chmod +x scripts/create-vm-windowsrv.sh
+        ./scripts/create-vm-windowsrv.sh
+        
     - name: Executar testes
       run: |
         pytest
