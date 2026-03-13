@@ -32,9 +32,9 @@ jobs:
 
     - name: Validar scripts
       run: |
-        chmod +x scripts/create-vm-windowsrv.sh
-        ./scripts/create-vm-windowsrv.sh
-        
+        chmod +x scripts/validate.sh
+        ./scripts/validate.sh
+
     - name: Executar testes
       run: |
         pytest
@@ -55,11 +55,15 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+    - name: Verificar login
+      run: az account show
+
     - name: Permissão script
       run: chmod +x scripts/create-vm-windowsrv.sh
 
     - name: Criar VM Windows
       env:
         ADMIN_PASSWORD: ${{ secrets.VM_WIN_PASSWORD }}
+
       run: |
         ./scripts/create-vm-windowsrv.sh
