@@ -1,26 +1,65 @@
-name: Deploy Azure Windows VM
+name: CI CD Pipeline Azure
 
 on:
+
+  push:
+    branches: [ main ]
+
+  pull_request:
+    branches: [ main ]
+
   workflow_dispatch:
 
 jobs:
-  deploy-windows:
+
+  CI:
+
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout código
-        uses: actions/checkout@v4
 
-      - name: Login no Azure
-        uses: azure/login@v2
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: Checkout código
+      uses: actions/checkout@v4
 
-      - name: Dar permissão de execução no script
-        run: chmod +x scripts/create-vm-windowsrv.sh
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
 
-      - name: Criar VM Windows
-        env:
-          ADMIN_PASSWORD: ${{ secrets.VM_WIN_PASSWORD }}
-        run: |
-          export ADMIN_PASSWORD="${ADMIN_PASSWORD}"
-          ./scripts/create-vm-windowsrv.sh
+    - name: Instalar dependências
+      run: |
+        python -m pip install pytest
+
+    - name: Validar scripts
+      run: |
+        chmod +x scripts/validate.sh
+        ./scripts/validate.sh
+
+    - name: Executar testes
+      run: |
+        pytest
+
+  Deploy:
+
+    needs: CI
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout código
+      uses: actions/checkout@v4
+
+    - name: Login Azure
+      uses: azure/login@v2
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Permissão script
+      run: chmod +x scripts/create-vm-windowsrv.sh
+
+    - name: Criar VM Windows
+      env:
+        ADMIN_PASSWORD: ${{ secrets.VM_WIN_PASSWORD }}
+      run: |
+        ./scripts/create-vm-windowsrv.sh
