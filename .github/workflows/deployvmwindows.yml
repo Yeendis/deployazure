@@ -63,7 +63,7 @@ jobs:
 
     - name: Criar VM Windows
       env:
-        ADMIN_PASSWORD: ${{ secrets.VM_WIN_PASSWORD }}
+        ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
 
       run: |
         ./scripts/create-vm-windowsrv.sh
